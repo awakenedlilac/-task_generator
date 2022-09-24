@@ -2,6 +2,4 @@
 ////
 """
 
-
-integer = 1
-integr_2 = 2
+integer = 2
