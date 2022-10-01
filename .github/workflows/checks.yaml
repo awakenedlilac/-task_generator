@@ -28,4 +28,4 @@ jobs:
         run: |
           cd ..
           export PYTHONPATH=./programming-2022-20fpl
-          python3 -m pylint programming-2022-20fpl --ignore=seminars
+          python3 -m pylint programming-2022-20fpl
