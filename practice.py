@@ -1,5 +1,5 @@
 """
-////
+Docstring notation
 """
-asdssds
-integer = 2
+
+integer_variable = 2
