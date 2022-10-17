@@ -32,6 +32,7 @@ class Generator:
     def task_1(self):
         text = self.original_texts[0]
         words = []
+        print('smth')
         for sent in text:
             word = sent.split()
             random.shuffle(word)
