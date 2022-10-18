@@ -93,6 +93,7 @@ class Saving:
         self.save()
 
     def save(self):
+        print('smth')
         doc_orig = Document()
         style = doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
