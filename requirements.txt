@@ -1,2 +1,2 @@
-nltk
-pylint
+pymorphy2
+docx
