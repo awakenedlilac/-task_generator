@@ -106,7 +106,7 @@ class Generator:
         for sentence in words:
             index = random.randint(0, len(sentence) - 1)
             answers.append(sentence[index])
-            sentence[index] = '({})'.format(counter)
+            sentence[index] = f'({counter})'
             counter += 1
             final.append(' '.join(sentence))
         random.shuffle(answers)
@@ -162,7 +162,7 @@ class Storage:
         row_4[0].text = 'Слово'
         row_4[1].text = 'Номер'
         for elem in self.saved_task.task_4(self.original_texts[3]):
-            if type(elem) == str:
+            if isinstance(elem, str):
                 doc.add_paragraph('\n' + elem)
             else:
                 for word in elem:
