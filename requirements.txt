@@ -1,2 +1,3 @@
 pymorphy2
 docx
+pylint
