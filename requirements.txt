@@ -1,4 +1,3 @@
 pymorphy2
 docx
 pylint
-programming-2022-20fpl
