@@ -1,3 +1,4 @@
+"""module docstring"""
 import re
 import random
 import pymorphy2
@@ -9,10 +10,16 @@ with open('text', 'r', encoding='utf-8') as f:
 
 
 class TextProcessor:
+
+    """processes the texts"""
+
     def __init__(self):
         self.original_text = []
 
     def tokenized_text(self, all_texts):
+
+        """splits the texts by # and removes the punctuation"""
+
         if not isinstance(all_texts, str):
             return None
         text = re.split(r'[#\n]', all_texts)
@@ -20,39 +27,54 @@ class TextProcessor:
             if elem != '':
                 self.original_text.append(re.split(r'[.?!]', elem))
             else:
-                text.remove('')
+                text.remove(elem)
         return self.original_text
 
 
 class Generator:
+
+    """in charge of the tasks"""
+
     def __init__(self, text: TextProcessor):
         self.text = text
         self.original_texts = self.gettingtexts()
 
     def gettingtexts(self):
+
+        """takes 4 texts"""
+
         original_texts = random.sample(self.text.tokenized_text(texts), 4)
         return original_texts
 
     def task_1(self, text):
+
+        """shuffles the words in the sentence"""
+
         words = []
         for sent in text:
             word = sent.split()
             random.shuffle(word)
             words.append(word)
-        return '. '.join(' '.join(x) for x in words)
+        return '. '.join(' '.join(word) for word in words)
 
     def task_2(self, text):
+
+        """changes the verbs on infinitives"""
+
         morph = pymorphy2.MorphAnalyzer()
         words = []
         for sent in text:
             for word in sent.lower().split():
-                p = morph.parse(word)[0]
-                if p.tag.POS == 'VERB':
+                elem = morph.parse(word)[0]
+                if elem.tag.POS == 'VERB':
                     word = morph.parse(word)[0].normal_form
                 words.append(word)
         return ' '.join(words)
 
     def task_3(self, text):
+
+        """makes halfs of the sentences"""
+
         words = []
         for sentence in text:
             if sentence == '':
@@ -71,6 +93,9 @@ class Generator:
         return exercise_3
 
     def task_4(self, text):
+
+        """removes random words from the sentence"""
+
         words = []
         for sentence in text:
             if sentence != '':
@@ -89,13 +114,19 @@ class Generator:
         return exercise_4
 
 
-class Saving:
+class Storage:
+
+    """storaging the tasks and original texts to docx files"""
+
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.gettingtexts()
         self.save()
 
     def save(self):
+
+        """saves original texts and tasks"""
+
         print('smth')
         doc_orig = Document()
         style = doc_orig.styles['Normal']
@@ -108,11 +139,11 @@ class Saving:
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
-        doc.add_paragraph('''Первое задание: поставьте
-        слова в правильном порядке.''')
+        doc.add_paragraph('Первое задание: поставьте '
+                          'слова в правильном порядке.')
         doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
-        doc.add_paragraph('''Второе задание: поставьте глаголы в нужную по
-        контексту форму и расставьте знаки препинания.''')
+        doc.add_paragraph('Второе задание: поставьте глаголы в '
+                          'нужную по контексту форму и расставьте знаки препинания.')
         doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
         doc.add_paragraph('Третье задание: соедините части предложения.')
         table_3 = doc.add_table(rows=1, cols=2)
@@ -142,10 +173,6 @@ class Saving:
         doc.save('/Users/a123/Desktop/tasks_1.docx')
 
 
-def task_gen():
-    text_proc = TextProcessor()
-    generate_tasks = Generator(text_proc)
-    saving = Saving(generate_tasks)
-
-
-task_gen()
+text_proc = TextProcessor()
+generate_tasks = Generator(text_proc)
+saving = Storage(generate_tasks)
