@@ -2,8 +2,7 @@
 import re
 import random
 import pymorphy2
-from docx import Document
-from docx.shared import Pt
+import docx
 
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
@@ -128,14 +127,14 @@ class Storage:
         """saves original texts and tasks"""
 
         print('smthhhhh')
-        doc_orig = Document()
+        doc_orig = docx.Document()
         style = doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
         doc_orig.add_paragraph('\n '.join('. '.join(x)
                                           for x in self.original_texts))
         doc_orig.save('/Users/a123/Desktop/tasks_2.docx')
-        doc = Document()
+        doc = docx.Document()
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
