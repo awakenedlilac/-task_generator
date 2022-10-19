@@ -27,5 +27,5 @@ jobs:
       - name: Lint with Pylint
         run: |
           cd ..
-          export PYTHONPATH=./awakenedlilac/-task_generator
-          python3 -m pylint awakenedlilac/-task_generator
+          export PYTHONPATH=./2022-2-lab
+          python3 -m pylint 2022-2-lab
