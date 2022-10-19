@@ -1,3 +1,4 @@
+# pylint: disable=R0903
 """module docstring"""
 import re
 import random
@@ -15,7 +16,7 @@ class TextProcessor:
     def __init__(self):
         self.original_text = []
 
-    def tokenized_text(self, all_texts):  # pylint: disable=R0903
+    def tokenized_text(self, all_texts):
 
         """splits the texts by # and removes the punctuation"""
 
@@ -117,7 +118,7 @@ class Storage:
 
     """storaging the tasks and original texts to docx files"""
 
-    def __init__(self, saved_task):  # pylint: disable=R0903
+    def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.gettingtexts()
         self.save()
