@@ -26,6 +26,4 @@ jobs:
           python3 -m unittest discover -p "*_test.py"
       - name: Lint with Pylint
         run: |
-          cd ..
-          export PYTHONPATH=./tasks_gen.py
-          python3 -m pylint tasks_gen.py
+          pylint $(find . -name "*.py" | xargs)
