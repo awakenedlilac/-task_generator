@@ -1,4 +1,5 @@
 # pylint: disable=R0903
+# pylint: disable=E1101
 """module docstring"""
 import re
 import random
