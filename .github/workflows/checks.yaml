@@ -27,5 +27,5 @@ jobs:
       - name: Lint with Pylint
         run: |
           cd ..
-          export PYTHONPATH=./-task_generator
-          python3 -m pylint -task_generator
+          export PYTHONPATH=./task_generator
+          python3 -m pylint task_generator
