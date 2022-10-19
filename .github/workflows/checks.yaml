@@ -27,5 +27,5 @@ jobs:
       - name: Lint with Pylint
         run: |
           cd ..
-          export PYTHONPATH=./2022-2-lab
-          python3 -m pylint 2022-2-lab
+          export PYTHONPATH=./tasks_gen.py
+          python3 -m pylint tasks_gen.py
