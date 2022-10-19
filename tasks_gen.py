@@ -7,6 +7,7 @@ from docx.shared import Pt
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
 
+
 class TextProcessor:
     def __init__(self):
         self.original_text = []
@@ -21,6 +22,7 @@ class TextProcessor:
             else:
                 text.remove('')
         return self.original_text
+
 
 class Generator:
     def __init__(self, text: TextProcessor):
@@ -86,6 +88,7 @@ class Generator:
         exercise_4 = ['. '.join(final), answers]
         return exercise_4
 
+
 class Saving:
     def __init__(self, saved_task):
         self.saved_task = saved_task
@@ -98,15 +101,18 @@ class Saving:
         style = doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
-        doc_orig.add_paragraph('\n '.join('. '.join(x) for x in self.original_texts))
+        doc_orig.add_paragraph('\n '.join('. '.join(x)
+                                          for x in self.original_texts))
         doc_orig.save('/Users/a123/Desktop/tasks_2.docx')
         doc = Document()
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
         style.font.size = Pt(14)
-        doc.add_paragraph('Первое задание: поставьте слова в правильном порядке.')
+        doc.add_paragraph('''Первое задание: поставьте
+        слова в правильном порядке.''')
         doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
-        doc.add_paragraph('Второе задание: поставьте глаголы в нужную по контексту форму и расставьте знаки препинания.')
+        doc.add_paragraph('''Второе задание: поставьте глаголы в нужную по
+        контексту форму и расставьте знаки препинания.''')
         doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
         doc.add_paragraph('Третье задание: соедините части предложения.')
         table_3 = doc.add_table(rows=1, cols=2)
@@ -132,10 +138,14 @@ class Saving:
                     row_4 = table_4.add_row().cells
                     row_4[0].text = word
                     row_4[1].text = ''
+
         doc.save('/Users/a123/Desktop/tasks_1.docx')
+
 
 def task_gen():
     text_proc = TextProcessor()
     generate_tasks = Generator(text_proc)
     saving = Saving(generate_tasks)
+
+
 task_gen()

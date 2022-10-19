@@ -1,3 +1,7 @@
+# pylint: skip-file
+"""
+Checks the first task
+"""
 import unittest
 from tasks_gen import Generator
 from tasks_gen import TextProcessor

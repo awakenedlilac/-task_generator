@@ -1,3 +1,4 @@
+# pylint: skip-file
 """
 Checks the first lab text preprocessing functions
 """
