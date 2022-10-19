@@ -15,7 +15,7 @@ class TextProcessor:
     def __init__(self):
         self.original_text = []
 
-    def tokenized_text(self, all_texts):
+    def tokenized_text(self, all_texts):  # pylint: disable=R0903
 
         """splits the texts by # and removes the punctuation"""
 
@@ -117,7 +117,7 @@ class Storage:
 
     """storaging the tasks and original texts to docx files"""
 
-    def __init__(self, saved_task):
+    def __init__(self, saved_task):  # pylint: disable=R0903
         self.saved_task = saved_task
         self.original_texts = self.saved_task.gettingtexts()
         self.save()
@@ -130,14 +130,12 @@ class Storage:
         doc_orig = docx.Document()
         style = doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
-        style.font.size = Pt(14)
         doc_orig.add_paragraph('\n '.join('. '.join(x)
                                           for x in self.original_texts))
         doc_orig.save('/Users/a123/Desktop/tasks_2.docx')
         doc = docx.Document()
         style = doc.styles['Normal']
         style.font.name = 'Times New Roman'
-        style.font.size = Pt(14)
         doc.add_paragraph('Первое задание: поставьте '
                           'слова в правильном порядке.')
         doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
