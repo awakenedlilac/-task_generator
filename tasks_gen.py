@@ -48,37 +48,42 @@ class Generator:
         return original_texts
 
     def task_1(self, text):
-
         """shuffles the words in the sentence"""
 
         words = []
-        for sent in text:
-            word = sent.split()
-            random.shuffle(word)
-            words.append(word)
+        for sentence in text:
+            if not isinstance(sentence, str) or not sentence:
+                text.remove(sentence)
+            else:
+                word = sentence.split()
+                random.shuffle(word)
+                words.append(word)
         return '. '.join(' '.join(word) for word in words)
 
     def task_2(self, text):
-
         """changes the verbs on infinitives"""
 
         morph = pymorphy2.MorphAnalyzer()
-        words = []
-        for sent in text:
-            for word in sent.lower().split():
-                elem = morph.parse(word)[0]
-                if elem.tag.POS == 'VERB':
-                    word = morph.parse(word)[0].normal_form
-                words.append(word)
-        return ' '.join(words)
+        sentences = []
+        for sentence in text:
+            words = []
+            if not isinstance(sentence, str) or not sentence:
+                text.remove(sentence)
+            else:
+                for word in sentence.lower().split():
+                    elem = morph.parse(word)[0]
+                    if elem.tag.POS == 'VERB':
+                        word = morph.parse(word)[0].normal_form
+                    words.append(word)
+                sentences.append(' '.join(words).capitalize())
+        return '. '.join(sentences)
 
     def task_3(self, text):
-
-        """makes halfs of the sentences"""
+        """makes halves of the sentences"""
 
         words = []
         for sentence in text:
-            if sentence == '':
+            if not isinstance(sentence, str) or not sentence:
                 text.remove(sentence)
             else:
                 words.append(sentence.split())
@@ -114,7 +119,6 @@ class Generator:
         exercise_4 = ['. '.join(final), answers]
         return exercise_4
 
-
 class Storage:
 
     """storaging the tasks and original texts to docx files"""
@@ -128,7 +132,6 @@ class Storage:
 
         """saves original texts and tasks"""
 
-        print('smthhhhh')
         doc_orig = docx.Document()
         style = doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
