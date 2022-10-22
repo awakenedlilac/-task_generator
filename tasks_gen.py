@@ -104,7 +104,9 @@ class Generator:
 
         words = []
         for sentence in text:
-            if sentence != '':
+            if not isinstance(sentence, str) or not sentence:
+                text.remove(sentence)
+            else:
                 words.append(sentence.split())
         answers = []
         final = []
@@ -117,6 +119,7 @@ class Generator:
             final.append(' '.join(sentence))
         random.shuffle(answers)
         exercise_4 = ['. '.join(final), answers]
+        print(exercise_4)
         return exercise_4
 
 class Storage:
