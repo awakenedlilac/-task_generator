@@ -17,18 +17,14 @@ class GenerateTest(unittest.TestCase):
     def test_generation_of_task_1_ideal(self):
         expected = ['рада Я' or 'Я рада']
         actual = self.tasks_generator.task_1(['Я рада'])
-        if actual in expected[0]:
-            self.assertEqual(expected[0], actual)
-        else:
-            self.assertEqual(expected[1], actual)
+        if actual in expected:
+            self.assertEqual(*expected, actual)
 
     def test_generation_of_task_1_not_ideal(self):
         expected = ['идет Время' or 'Время идет']
         actual = self.tasks_generator.task_1(['Время идет', '', [], {}, 1, 0.34, None, True])
-        if actual in expected[0]:
-            self.assertEqual(expected[0], actual)
-        else:
-            self.assertEqual(expected[1], actual)
+        if actual in expected:
+            self.assertEqual(*expected, actual)
 
     def test_generation_of_task_2_ideal(self):
         expected = 'Завтра я быть покупать машину. Они очень громко смеяться'
@@ -45,10 +41,8 @@ class GenerateTest(unittest.TestCase):
                     or ['Когда мы идем гулять, мы', 'обычно берем с собой зонт'], ['Они хотят', 'играть в футбол']]
         actual = self.tasks_generator.task_3(['Когда мы идем гулять, мы обычно берем с собой зонт',
                                               'Они хотят играть в футбол'])
-        if actual in expected[0]:
-            self.assertEqual(expected[0], actual)
-        elif actual in expected[1]:
-            self.assertEqual(expected[1], actual)
+        if actual in expected:
+            self.assertEqual(expected, actual)
 
     def test_generation_of_task_3_not_ideal(self):
         expected = [['На обед', 'он есть рыбу']]
@@ -61,14 +55,14 @@ class GenerateTest(unittest.TestCase):
                     or ['Мы хотим играть в (1)', ['футбол']]]
         actual = self.tasks_generator.task_4(['Мы хотим играть в футбол'])
         if actual in expected:
-            self.assertEqual(expected, actual)
+            self.assertEqual(*expected, actual)
 
     def test_generation_of_task_4_not_ideal(self):
         expected = [['(1) в футбол', ['Играем']] or ['Играем (1) футбол', ['в']]
                     or ['Играем в (1) ', ['футбол']]]
         actual = self.tasks_generator.task_4(['Играем в футбол', '', [], {}, 1, None])
         if actual in expected:
-            self.assertEqual(expected, *actual)
+            self.assertEqual(*expected, actual)
 
 
 
