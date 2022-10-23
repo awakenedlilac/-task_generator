@@ -1,16 +1,26 @@
-# # pylint: skip-file
-# """
-# Checks the storaging
-# """
-#
-# import unittest
-# from tasks_gen import save
-#
-# class SaveTasksTest(unittest.TestCase):
-#     """
-#     Storaging
-#     """
-#     def test_storaging(self):
-#         expected = 0
-#         actual = 'jxttm hf z'.save()
-#         self.assertEqual(expected, actual)
+# pylint: skip-file
+"""
+Checks the storaging
+"""
+
+import unittest
+from tasks_gen import TextProcessor
+from tasks_gen import Generator
+from tasks_gen import Storage
+
+class SaveTasksTest(unittest.TestCase):
+    """
+    Storaging
+    """
+    @classmethod
+    def setUpClass(cls):
+        cls.tasks_generator = Generator(TextProcessor())
+        cls.saver = Storage(Generator(TextProcessor()))
+
+    def test_storage(self):
+        expected = 0
+        first_thing_to_save = self.tasks_generator.getting_texts()
+        second_thing_to_save = self.tasks_generator.task_1(['Я рада'])
+        actual = self.saver.save_all(first_thing_to_save, second_thing_to_save)
+        self.assertEqual(expected, actual)
+

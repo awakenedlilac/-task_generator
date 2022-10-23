@@ -1,4 +1,5 @@
-
+# pylint: disable=R0903
+# pylint: disable=E1101
 """module docstring"""
 import re
 import random
@@ -127,7 +128,7 @@ class Storage:
 
     def __init__(self, saved_task):
         self.saved_task = saved_task
-        self.original_texts = self.saved_task.gettingtexts()
+        self.original_texts = self.saved_task.getting_texts()
         self.doc_orig = docx.Document()
         self.doc = docx.Document()
         self.save_original_texts()
@@ -135,7 +136,7 @@ class Storage:
         self.save_task_2()
         self.save_task_3()
         self.save_task_4()
-        self.save_all()
+        self.save_all(self.doc_orig, self.doc)
 
     def save_original_texts(self):
 
@@ -196,13 +197,13 @@ class Storage:
                     row_4[0].text = word
                     row_4[1].text = ''
 
-    def save_all(self):
+    def save_all(self, doc_1, doc_2):
 
         """adds everything to the docx documents"""
 
         self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
         self.doc.save('/Users/a123/Desktop/tasks.docx')
-
+        return 0
 
 text_proc = TextProcessor()
 generate_tasks = Generator(text_proc)
