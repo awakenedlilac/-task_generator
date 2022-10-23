@@ -1,5 +1,4 @@
-# pylint: disable=R0903
-# pylint: disable=E1101
+
 """module docstring"""
 import re
 import random
@@ -38,9 +37,9 @@ class Generator:
 
     def __init__(self, text: TextProcessor):
         self.text = text
-        self.original_texts = self.gettingtexts()
+        self.original_texts = self.getting_texts()
 
-    def gettingtexts(self):
+    def getting_texts(self):
 
         """takes 4 texts"""
 
@@ -124,7 +123,7 @@ class Generator:
 
 class Storage:
 
-    """storaging the tasks and original texts to docx files"""
+    """storages the tasks and original texts to docx files"""
 
     def __init__(self, saved_task):
         self.saved_task = saved_task
@@ -140,7 +139,7 @@ class Storage:
 
     def save_original_texts(self):
 
-        """saves original texts and tasks"""
+        """saves original texts"""
 
         style = self.doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
