@@ -129,29 +129,39 @@ class Storage:
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.gettingtexts()
-        self.save()
+        self.doc_orig = docx.Document()
+        self.doc = docx.Document()
+        self.save_original_texts()
+        self.save_task_1()
+        self.save_task_2()
+        self.save_task_3()
+        self.save_task_4()
+        self.save_all()
 
-    def save(self):
+    def save_original_texts(self):
 
         """saves original texts and tasks"""
 
-        doc_orig = docx.Document()
-        style = doc_orig.styles['Normal']
+        style = self.doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
-        doc_orig.add_paragraph('\n '.join('. '.join(x)
-                                          for x in self.original_texts))
-        doc_orig.save('/Users/a123/Desktop/tasks_2.docx')
-        doc = docx.Document()
-        style = doc.styles['Normal']
+        self.doc_orig.add_paragraph('\n '.join('. '.join(x)
+                                               for x in self.original_texts))
+
+    def save_task_1(self):
+        style = self.doc.styles['Normal']
         style.font.name = 'Times New Roman'
-        doc.add_paragraph('Первое задание: поставьте '
-                          'слова в правильном порядке.')
-        doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
-        doc.add_paragraph('Второе задание: поставьте глаголы в '
-                          'нужную по контексту форму и расставьте знаки препинания.')
-        doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
-        doc.add_paragraph('Третье задание: соедините части предложения.')
-        table_3 = doc.add_table(rows=1, cols=2)
+        self.doc.add_paragraph('Первое задание: поставьте '
+                               'слова в правильном порядке.')
+        self.doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
+
+    def save_task_2(self):
+        self.doc.add_paragraph('Второе задание: поставьте глаголы в '
+                               'нужную по контексту форму и расставьте знаки препинания.')
+        self.doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
+
+    def save_task_3(self):
+        self.doc.add_paragraph('Третье задание: соедините части предложения.')
+        table_3 = self.doc.add_table(rows=1, cols=2)
         table_3.style = 'Table Grid'
         row_3 = table_3.rows[0].cells
         row_3[0].text = 'Начало'
@@ -160,22 +170,26 @@ class Storage:
             row_3 = table_3.add_row().cells
             row_3[0].text = parts[0]
             row_3[1].text = parts[1]
-        doc.add_paragraph('Четвертое задание: вставьте слова.')
-        table_4 = doc.add_table(rows=1, cols=2)
+
+    def save_task_4(self):
+        self.doc.add_paragraph('Четвертое задание: вставьте слова.')
+        table_4 = self.doc.add_table(rows=1, cols=2)
         table_4.style = 'Table Grid'
         row_4 = table_4.rows[0].cells
         row_4[0].text = 'Слово'
         row_4[1].text = 'Номер'
         for elem in self.saved_task.task_4(self.original_texts[3]):
             if isinstance(elem, str):
-                doc.add_paragraph('\n' + elem)
+                self.doc.add_paragraph('\n' + elem)
             else:
                 for word in elem:
                     row_4 = table_4.add_row().cells
                     row_4[0].text = word
                     row_4[1].text = ''
 
-        doc.save('/Users/a123/Desktop/tasks_1.docx')
+    def save_all(self):
+        self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
+        self.doc.save('/Users/a123/Desktop/tasks.docx')
 
 
 text_proc = TextProcessor()

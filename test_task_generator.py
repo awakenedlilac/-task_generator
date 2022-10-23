@@ -63,9 +63,3 @@ class GenerateTest(unittest.TestCase):
         actual = self.tasks_generator.task_4(['Играем в футбол', '', [], {}, 1, None])
         if actual in expected:
             self.assertEqual(*expected, actual)
-
-
-
-
-
-
