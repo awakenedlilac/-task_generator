@@ -148,18 +148,25 @@ class Storage:
                                                for x in self.original_texts))
 
     def save_task_1(self):
-        style = self.doc.styles['Normal']
-        style.font.name = 'Times New Roman'
+
+        """saves the first task"""
+
         self.doc.add_paragraph('Первое задание: поставьте '
                                'слова в правильном порядке.')
         self.doc.add_paragraph(self.saved_task.task_1(self.original_texts[0]))
 
     def save_task_2(self):
+
+        """saves the second task"""
+
         self.doc.add_paragraph('Второе задание: поставьте глаголы в '
                                'нужную по контексту форму и расставьте знаки препинания.')
         self.doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
 
     def save_task_3(self):
+
+        """saves the third task"""
+
         self.doc.add_paragraph('Третье задание: соедините части предложения.')
         table_3 = self.doc.add_table(rows=1, cols=2)
         table_3.style = 'Table Grid'
@@ -172,6 +179,9 @@ class Storage:
             row_3[1].text = parts[1]
 
     def save_task_4(self):
+
+        """saves the fourth task"""
+
         self.doc.add_paragraph('Четвертое задание: вставьте слова.')
         table_4 = self.doc.add_table(rows=1, cols=2)
         table_4.style = 'Table Grid'
@@ -188,6 +198,9 @@ class Storage:
                     row_4[1].text = ''
 
     def save_all(self):
+
+        """adds everything to the docx documents"""
+
         self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
         self.doc.save('/Users/a123/Desktop/tasks.docx')
 
