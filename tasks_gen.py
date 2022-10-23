@@ -197,7 +197,7 @@ class Storage:
                     row_4[0].text = word
                     row_4[1].text = ''
 
-    def save_all(self, doc_1, doc_2):
+    def save_all(self, _doc_orig, _doc):
 
         """adds everything to the docx documents"""
 
