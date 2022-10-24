@@ -1,7 +1,7 @@
 """Generator of tasks"""
 import re
 import random
-import docx
+import docx.document
 import pymorphy2
 
 with open('text', 'r', encoding='utf-8') as f:
