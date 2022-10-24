@@ -147,7 +147,7 @@ class Storage:
         style = docx.Document().styles['Normal']
         style.font.name = 'Times New Roman'
         docx.Document().add_paragraph('\n '.join('. '.join(x)
-                                               for x in self.original_texts))
+                                                 for x in self.original_texts))
 
     def save_task_1(self):
 
@@ -203,7 +203,7 @@ class Storage:
 
         """adds everything to the docx documents"""
 
-        self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
+        docx.Document().save('/Users/a123/Desktop/original_texts.docx')
         self.doc.save('/Users/a123/Desktop/tasks.docx')
         return 0
 
