@@ -186,6 +186,7 @@ class Storage:
 
         self.doc.add_paragraph('Четвертое задание: вставьте слова.')
         table_4 = self.doc.add_table(rows=1, cols=2)
+        print('d')
         table_4.style = 'Table Grid'
         row_4 = table_4.rows[0].cells
         row_4[0].text = 'Слово'
