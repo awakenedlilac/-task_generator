@@ -14,7 +14,6 @@ class TextProcessor:
 
     def __init__(self):
         self.original_text = []
-        self.return_works()
 
     def tokenized_text(self, all_texts):
 
@@ -26,17 +25,14 @@ class TextProcessor:
         for elem in text:
             if elem != '':
                 self.original_text.append(re.split(r'[.?!]', elem))
-            else:
-                text.remove(elem)
         return self.original_text
 
-    def return_works(self):
+    def return_original(self, _original_text):
 
-        """returns zero if True"""
+        """return original texts"""
 
-        if self.original_text:
-            return 0
-
+        self.tokenized_text(texts)
+        return self.original_text
 
 class Generator:
 
@@ -50,7 +46,7 @@ class Generator:
 
         """takes 4 texts"""
 
-        original_texts = random.sample(self.text.tokenized_text(texts), 4)
+        original_texts = random.sample(self.text.return_original(texts), 4)
         return original_texts
 
     def task_1(self, text):

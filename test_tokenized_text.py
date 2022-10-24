@@ -28,7 +28,7 @@ class TokenizeTest(unittest.TestCase):
         """
         self.text_processor = TextProcessor()
         expected = [['Я был в магазине', ''], ['Купил все продукты', '']]
-        actual = self.text_processor.tokenized_text("""#\nЯ был в магазине.\n#\nКупил все продукты.""")
+        actual = self.text_processor.tokenized_text("#\nЯ был в магазине.\n#\nКупил все продукты.")
         self.assertEqual(expected, actual)
 
     def test_tokenize_bad_input(self):
