@@ -131,7 +131,7 @@ class Storage:
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.getting_texts()
-        self.doc_orig = docx.Document()
+        self.doc_orig = docx.api.Document()
         self.doc = docx.Document()
         self.save_original_texts()
         self.save_task_1()
