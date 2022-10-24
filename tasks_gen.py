@@ -14,6 +14,7 @@ class TextProcessor:
 
     def __init__(self):
         self.original_text = []
+        self.return_works()
 
     def tokenized_text(self, all_texts):
 
@@ -28,6 +29,13 @@ class TextProcessor:
             else:
                 text.remove(elem)
         return self.original_text
+
+    def return_works(self):
+
+        """returns zero if True"""
+
+        if self.original_text:
+            return 0
 
 
 class Generator:
