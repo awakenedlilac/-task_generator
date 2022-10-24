@@ -1,7 +1,7 @@
 """Generator of tasks"""
 import re
 import random
-import docx.document
+from docx import Document
 import pymorphy2
 
 with open('text', 'r', encoding='utf-8') as f:
@@ -131,8 +131,8 @@ class Storage:
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.getting_texts()
-        self.doc_orig = docx.Document()
-        self.doc = docx.Document()
+        self.doc_orig = Document()
+        self.doc = Document()
         self.save_original_texts()
         self.save_task_1()
         self.save_task_2()
