@@ -1,6 +1,4 @@
-# pylint: disable=R0903
-# pylint: disable=E1101
-"""module docstring"""
+"""Generator of tasks"""
 import re
 import random
 import pymorphy2
