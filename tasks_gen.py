@@ -185,6 +185,7 @@ class Storage:
         """saves the fourth task"""
 
         self.doc.add_paragraph('Четвертое задание: вставьте слова.')
+        print('s')
         table_4 = self.doc.add_table(rows=1, cols=2)
         table_4.style = 'Table Grid'
         row_4 = table_4.rows[0].cells
