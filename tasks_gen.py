@@ -1,4 +1,3 @@
-# pylint: disable=E1101
 """Generator of tasks"""
 import re
 import random
