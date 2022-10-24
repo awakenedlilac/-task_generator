@@ -131,23 +131,23 @@ class Storage:
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.getting_texts()
-        # self.doc_orig = docx.Document()
+        self.doc_orig = docx.Document()
         self.doc = docx.Document()
         self.save_original_texts()
         self.save_task_1()
         self.save_task_2()
         self.save_task_3()
         self.save_task_4()
-        self.save_all(docx.Document(), self.doc)
+        self.save_all(self.doc_orig, self.doc)
 
     def save_original_texts(self):
 
         """saves original texts"""
 
-        style = docx.Document().styles['Normal']
+        style = self.doc_orig.styles['Normal']
         style.font.name = 'Times New Roman'
-        docx.Document().add_paragraph('\n '.join('. '.join(x)
-                                                 for x in self.original_texts))
+        self.doc_orig.add_paragraph('\n '.join('. '.join(x)
+                                               for x in self.original_texts))
 
     def save_task_1(self):
 
@@ -203,7 +203,7 @@ class Storage:
 
         """adds everything to the docx documents"""
 
-        docx.Document().save('/Users/a123/Desktop/original_texts.docx')
+        self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
         self.doc.save('/Users/a123/Desktop/tasks.docx')
         return 0
 
