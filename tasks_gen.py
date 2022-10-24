@@ -2,7 +2,7 @@
 import re
 import random
 import pymorphy2
-from docx.api import Document
+from docx import Document
 
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
