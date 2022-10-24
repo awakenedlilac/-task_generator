@@ -1,8 +1,9 @@
+# pylint: disable=E1101
 """Generator of tasks"""
 import re
 import random
 import pymorphy2
-import docx.document
+import docx
 
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
