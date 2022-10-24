@@ -2,7 +2,7 @@
 import re
 import random
 import pymorphy2
-import docx.api
+from docx.api import Document
 
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
@@ -131,8 +131,8 @@ class Storage:
     def __init__(self, saved_task):
         self.saved_task = saved_task
         self.original_texts = self.saved_task.getting_texts()
-        self.doc_orig = docx.Document(docx=None)
-        self.doc = docx.Document(docx=None)
+        self.doc_orig = Document(docx=None)
+        self.doc = Document(docx=None)
         self.save_original_texts()
         self.save_task_1()
         self.save_task_2()
