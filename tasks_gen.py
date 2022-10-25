@@ -3,6 +3,9 @@ import re
 import random
 from docx import Document
 import pymorphy2
+import nltk
+from nltk.tokenize import word_tokenize
+nltk.download('punkt')
 
 with open('text', 'r', encoding='utf-8') as f:
     texts = f.read()
@@ -57,7 +60,7 @@ class Generator:
             if not isinstance(sentence, str) or not sentence:
                 text.remove(sentence)
             else:
-                word = sentence.split()
+                word = word_tokenize(sentence)
                 random.shuffle(word)
                 words.append(word)
         return '. '.join(' '.join(word) for word in words)
@@ -72,7 +75,7 @@ class Generator:
             if not isinstance(sentence, str) or not sentence:
                 text.remove(sentence)
             else:
-                for word in sentence.lower().split():
+                for word in word_tokenize(sentence.lower()):
                     elem = morph.parse(word)[0]
                     if elem.tag.POS == 'VERB':
                         word = morph.parse(word)[0].normal_form
@@ -88,7 +91,7 @@ class Generator:
             if not isinstance(sentence, str) or not sentence:
                 text.remove(sentence)
             else:
-                words.append(sentence.split())
+                words.append(word_tokenize(sentence))
         parts_1 = []
         parts_2 = []
         for sent in words:
@@ -109,7 +112,7 @@ class Generator:
             if not isinstance(sentence, str) or not sentence:
                 text.remove(sentence)
             else:
-                words.append(sentence.split())
+                words.append(word_tokenize(sentence))
         answers = []
         final = []
         counter = 1
@@ -121,7 +124,6 @@ class Generator:
             final.append(' '.join(sentence))
         random.shuffle(answers)
         exercise_4 = ['. '.join(final), answers]
-        print(exercise_4)
         return exercise_4
 
 class Storage:
@@ -186,7 +188,6 @@ class Storage:
 
         self.doc.add_paragraph('Четвертое задание: вставьте слова.')
         table_4 = self.doc.add_table(rows=1, cols=2)
-        print('dh')
         table_4.style = 'Table Grid'
         row_4 = table_4.rows[0].cells
         row_4[0].text = 'Слово'
