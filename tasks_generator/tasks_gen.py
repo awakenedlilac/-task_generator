@@ -7,7 +7,8 @@ import nltk
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
-with open('/Users/a123/PycharmProjects/2022-2-lab/tasks_generator/text', 'r', encoding='utf-8') as f:
+with open('/Users/a123/PycharmProjects/2022-2-lab/tasks_generator/text',
+          'r', encoding='utf-8') as f:
     texts = f.read()
 
 
@@ -202,9 +203,15 @@ class Storage:
                     row_4[1].text = ''
 
     def storage_all(self, _doc_orig, _doc):
+
+        """returns 0 in case of storaging"""
+
         return 0
 
 def main():
+
+    """runs everything"""
+
     text_proc = TextProcessor()
     generate_tasks = Generator(text_proc)
     saving = Storage(generate_tasks)
