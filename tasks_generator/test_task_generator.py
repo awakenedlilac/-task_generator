@@ -3,8 +3,8 @@
 Checks the first task
 """
 import unittest
-from tasks_gen import Generator
-from tasks_gen import TextProcessor
+from tasks_generator.tasks_gen import Generator
+from tasks_generator.tasks_gen import TextProcessor
 
 class GenerateTest(unittest.TestCase):
     """

@@ -4,9 +4,9 @@ Checks the storaging
 """
 
 import unittest
-from tasks_gen import TextProcessor
-from tasks_gen import Generator
-from tasks_gen import Storage
+from tasks_generator.tasks_gen import TextProcessor
+from tasks_generator.tasks_gen import Generator
+from tasks_generator.tasks_gen import Storage
 
 class SaveTasksTest(unittest.TestCase):
     """
@@ -21,6 +21,6 @@ class SaveTasksTest(unittest.TestCase):
         expected = 0
         first_thing_to_save = self.tasks_generator.getting_texts()
         second_thing_to_save = self.tasks_generator.task_1(['Я рада'])
-        actual = self.saver.save_all(first_thing_to_save, second_thing_to_save)
+        actual = self.saver.storage_all(first_thing_to_save, second_thing_to_save)
         self.assertEqual(expected, actual)
 

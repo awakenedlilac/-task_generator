@@ -4,7 +4,7 @@ Checks the first lab text preprocessing functions
 """
 
 import unittest
-from tasks_gen import TextProcessor
+from tasks_generator.tasks_gen import TextProcessor
 
 class TokenizeTest(unittest.TestCase):
     """

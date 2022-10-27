@@ -7,7 +7,7 @@ import nltk
 from nltk.tokenize import word_tokenize
 nltk.download('punkt')
 
-with open('text', 'r', encoding='utf-8') as f:
+with open('/Users/a123/PycharmProjects/2022-2-lab/tasks_generator/text', 'r', encoding='utf-8') as f:
     texts = f.read()
 
 
@@ -140,7 +140,7 @@ class Storage:
         self.save_task_2()
         self.save_task_3()
         self.save_task_4()
-        self.save_all(self.doc_orig, self.doc)
+        self.storage_all(self.doc_orig, self.doc)
 
     def save_original_texts(self):
 
@@ -201,14 +201,15 @@ class Storage:
                     row_4[0].text = word
                     row_4[1].text = ''
 
-    def save_all(self, _doc_orig, _doc):
-
-        """adds everything to the docx documents"""
-
-        self.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
-        self.doc.save('/Users/a123/Desktop/tasks.docx')
+    def storage_all(self, _doc_orig, _doc):
         return 0
 
-text_proc = TextProcessor()
-generate_tasks = Generator(text_proc)
-saving = Storage(generate_tasks)
+def main():
+    text_proc = TextProcessor()
+    generate_tasks = Generator(text_proc)
+    saving = Storage(generate_tasks)
+    saving.doc_orig.save('/Users/a123/Desktop/original_texts.docx')
+    saving.doc.save('/Users/a123/Desktop/tasks.docx')
+
+if __name__ == "__main__":
+    main()
