@@ -165,7 +165,7 @@ class Storage:
         """saves the second task"""
 
         self.doc.add_paragraph('Второе задание: поставьте глаголы в '
-                               'нужную по контексту форму и расставьте знаки препинания.')
+                               'нужную по контексту форму.')
         self.doc.add_paragraph(self.saved_task.task_2(self.original_texts[1]))
 
     def save_task_3(self):
